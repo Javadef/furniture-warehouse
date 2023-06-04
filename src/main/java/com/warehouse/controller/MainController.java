@@ -20,7 +20,7 @@ public class MainController {
     }
 
     public void start() {
-        displayApplicationInfo();
+        menuView.displayApplicationInfo();
 
         while (true) {
             menuView.displayMenu();
@@ -44,20 +44,20 @@ public class MainController {
         }
     }
 
-    private void displayApplicationInfo() {
-        System.out.println("Warehouse Search System v1.0 (Created on 2023-06-04)");
-        System.out.println("Developer: John Doe");
-        System.out.println("Email: john.doe@example.com");
-        System.out.println("---------------------------------------------");
-    }
-
     private void addProduct() {
-        String name = inputHandler.getStringInput("Enter product name");
-        String category = inputHandler.getStringInput("Enter product category");
-        double price = inputHandler.getDoubleInput("Enter product price");
-        int quantity = inputHandler.getIntInput("Enter product quantity");
+        try {
+            String name = inputHandler.getStringInput("Enter product name");
+            String category = inputHandler.getStringInput("Enter product category");
+            double price = inputHandler.getDoubleInput("Enter product price");
+            int quantity = inputHandler.getIntInput("Enter product quantity");
+            String manufacturer = inputHandler.getStringInput("Enter product manufacturer");
+            double weight = inputHandler.getDoubleInput("Enter product weight");
+            String dimensions = inputHandler.getStringInput("Enter product dimensions");
 
-        productService.addProduct(name, category, price, quantity);
+            productService.addProduct(name, category, price, quantity, manufacturer, weight, dimensions);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
     }
 
     private void viewProductDetails() {
@@ -67,13 +67,20 @@ public class MainController {
     }
 
     private void updateProduct() {
-        String id = inputHandler.getStringInput("Enter product ID");
-        String name = inputHandler.getStringInput("Enter new product name");
-        String category = inputHandler.getStringInput("Enter new product category");
-        double price = inputHandler.getDoubleInput("Enter new product price");
-        int quantity = inputHandler.getIntInput("Enter new product quantity");
+        try {
+            String id = inputHandler.getStringInput("Enter product ID");
+            String name = inputHandler.getStringInput("Enter new product name");
+            String category = inputHandler.getStringInput("Enter new product category");
+            double price = inputHandler.getDoubleInput("Enter new product price");
+            int quantity = inputHandler.getIntInput("Enter new product quantity");
+            String manufacturer = inputHandler.getStringInput("Enter new product manufacturer");
+            double weight = inputHandler.getDoubleInput("Enter new product weight");
+            String dimensions = inputHandler.getStringInput("Enter new product dimensions");
 
-        productService.updateProduct(id, name, category, price, quantity);
+            productService.updateProduct(id, name, category, price, quantity, manufacturer, weight, dimensions);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+        }
     }
 
     private void deleteProduct() {
@@ -83,7 +90,7 @@ public class MainController {
     }
 
     private void searchProductsByParameter() {
-        String parameter = inputHandler.getStringInput("Enter search parameter (id, name, category, price, quantity)");
+        String parameter = inputHandler.getStringInput("Enter search parameter ( Supported parameters: id, name, category, manufacturer, price, quantity, weight, dimensions.)");
         String value = inputHandler.getStringInput("Enter search value");
 
         productService.searchProductsByParameter(parameter, value);

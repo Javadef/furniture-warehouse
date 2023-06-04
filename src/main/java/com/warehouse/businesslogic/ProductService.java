@@ -1,8 +1,11 @@
 package com.warehouse.businesslogic;
 
 public interface ProductService {
-    void addProduct(String name, String category, double price, int quantity);
-    void updateProduct(String id, String name, String category, double price, int quantity);
+    void addProduct(String name, String category, double price, int quantity,
+                    String manufacturer, double weight, String dimensions);
+
+    void updateProduct(String id, String name, String category, double price, int quantity,
+                       String manufacturer, double weight, String dimensions);
 
     void deleteProduct(String id);
 

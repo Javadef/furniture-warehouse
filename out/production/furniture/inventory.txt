@@ -1,41 +1,41 @@
-/* ID;Name;Category;price;quantity */
-1,Chair,Furniture,49.99,10
-2,Bookshelf,Furniture,79.99,5
-3,CozyBlanket,Decor,29.99,15
-4,CoffeeMug,Kitchen,9.99,50
-5,DeskLamp,Decor,19.99,20
-6,DiningTable,Furniture,199.99,2
-7,WallClock,Decor,14.99,30
-8,ThrowPillow,Decor,12.99,25
-9,KnifeSet,Kitchen,49.99,8
-10,ComputerDesk,Furniture,149.99,3
-11,Curtains,Decor,34.99,12
-12,Toaster,Kitchen,24.99,18
-13,OfficeChair,Furniture,89.99,6
-14,PictureFrame,Decor,9.99,40
-15,CuttingBoard,Kitchen,14.99,15
-16,TVStand,Furniture,119.99,4
-17,PlantPot,Decor,7.99,50
-18,Blender,Kitchen,39.99,10
-19,EndTable,Furniture,69.99,5
-20,CandleHolder,Decor,6.99,35
-21,BeanBag,Furniture,79.99,10
-22,ChaiseLounge,Furniture,249.99,3
-23,ConsoleTable,Furniture,149.99,6
-24,BarStool,Furniture,59.99,8
-25,SofaSet,Furniture,799.99,2
-26,Bookcase,Furniture,169.99,4
-27,AccentChair,Furniture,129.99,5
-28,Dresser,Furniture,299.99,3
-29,TVConsole,Furniture,199.99,4
-30,SectionalSofa,Furniture,1199.99,1
-31,CeilingFan,Decor,89.99,10
-32,Rug,Decor,79.99,15
-33,WallArt,Decor,49.99,20
-34,CurtainRods,Decor,19.99,30
-35,TableLamp,Decor,39.99,12
-36,WallShelves,Decor,24.99,25
-37,CookwareSet,Kitchen,149.99,5
-38,FoodProcessor,Kitchen,79.99,8
-39,BarbecueGrill,Kitchen,299.99,2
-40,EspressoMachine,Kitchen,199.99,4
+/* ID;Name;Category;Price;Quantity;Manufacturer;Weight;Dimensions */
+1;Chair;Furniture;49.99;10;ABC Furniture;15.2;25x25x40
+2;Bookshelf;Furniture;79.99;5;XYZ Furnishings;42.5;30x12x72
+3;Cozy Blanket;Decor;29.99;15;Soft Touch Fabrics;2.8;60x80
+4;Coffee Mug;Kitchen;9.99;50;MugMaster;0.5;4x4x4
+5;Desk Lamp;Decor;19.99;20;Illumina Lighting;1.2;6x6x14
+6;Dining Table;Furniture;199.99;2;FineWood Crafts;70.3;72x36x30
+7;Wall Clock;Decor;14.99;30;TimeMaster;1.5;12x12x1.5
+8;Throw Pillow;Decor;12.99;25;Pillow Paradise;0.8;18x18x6
+9;Knife Set;Kitchen;49.99;8;SharpEdge Cutlery;4.6;14x10x1.5
+10;Computer Desk;Furniture;149.99;3;TechSavvy Designs;45.9;48x24x30
+11;Curtains;Decor;34.99;12;Elegant Drapes;2.3;72x84
+12;Toaster;Kitchen;24.99;18;ToastMaster;3.2;10x6x7
+13;Office Chair;Furniture;89.99;6;ErgoComfort Seating;21.5;24x24x36
+14;Picture Frame;Decor;9.99;40;FrameItUp;0.6;8x10
+15;Cutting Board;Kitchen;14.99;15;ChopMaster;1.2;16x12x0.75
+16;TV Stand;Furniture;119.99;4;Entertainment Essentials;28.8;48x18x24
+17;Plant Pot;Decor;7.99;50;Greener Spaces;0.9;6x6x6
+18;Blender;Kitchen;39.99;10;BlendMaster;4.1;8x8x16
+19;End Table;Furniture;69.99;5;Finishing Touches;14.6;20x20x22
+20;Candle Holder;Decor;6.99;35;Glowing Ambiance;0.4;4x4x4
+21;Bean Bag;Furniture;79.99;10;Comfy Coziness;12.4;36x36x24
+22;Chaise Lounge;Furniture;249.99;3;Relaxation Haven;42.9;68x30x36
+23;Console Table;Furniture;149.99;6;Sleek Designs;32.7;42x14x30
+24;Bar Stool;Furniture;59.99;8;BarBuddy Seating;15.2;16x16x30
+25;Sofa Set;Furniture;799.99;2;Luxury Living;125.8;80x36x32 (sofa), 60x36x32 (loveseat)
+26;Bookcase;Furniture;169.99;4;Bookworm Furnishings;56.3;36x12x72
+27;Accent Chair;Furniture;129.99;5;Statement Seating;18.9;28x28x32
+28;Dresser;Furniture;299.99;3;OrganizeMe;77.6;60x18x36
+29;TV Console;Furniture;199.99;4;Entertainment Essentials;65.4;60x16x24
+30;Sectional Sofa;Furniture;1199.99;1;Cozy Corner;195.2;120x84x36 (overall)
+31;Ceiling Fan;Decor;89.99;10;BreezeMaster;11.8;52-inch diameter
+32;Rug;Decor;79.99;15;SoftStep Rugs;12.5;5x8
+33;Wall Art;Decor;49.99;20;Artistic Expressions;2.4;24x36
+34;Curtain Rods;Decor;19.99;30;Window Wonders;1.8;adjustable length
+35;Table Lamp;Decor;39.99;12;Illumina Lighting;3.6;8x8x18
+36;Wall Shelves;Decor;24.99;25;Space Saver;4.9;24x6x6 (each shelf)
+37;Cookware Set;Kitchen;149.99;5;MasterChef Collection;22.3;various sizes
+38;Food Processor;Kitchen;79.99;8;Chop & Blend;10.6;10x8x16
+39;Barbecue Grill;Kitchen;299.99;2;GrillMaster;68.2;48x22x48
+40;Espresso Machine;Kitchen;199.99;4;CafeLux;16.8;10x8x14

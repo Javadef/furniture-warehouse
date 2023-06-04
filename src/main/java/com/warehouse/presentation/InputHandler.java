@@ -10,7 +10,7 @@ public class InputHandler {
     }
 
     public String getCommand() {
-        System.out.print("Enter command: ");
+        System.out.print("Enter command > ");
         return scanner.nextLine().trim();
     }
 

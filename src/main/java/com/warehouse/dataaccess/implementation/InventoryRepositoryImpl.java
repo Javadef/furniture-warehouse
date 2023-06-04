@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class InventoryRepositoryImpl implements InventoryRepository {
@@ -24,15 +25,24 @@ public class InventoryRepositoryImpl implements InventoryRepository {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/inventory.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length == 5) {
-                    String id = data[0];
-                    String name = data[1];
-                    String category = data[2];
-                    double price = Double.parseDouble(data[3]);
-                    int quantity = Integer.parseInt(data[4]);
-                    Product product = new Product(id, name, category, price, quantity);
-                    inventory.add(product);
+                try {
+                    String[] data = line.split(";");
+                    if (data.length == 8) {
+                        String id = data[0];
+                        String name = data[1];
+                        String category = data[2];
+                        double price = Double.parseDouble(data[3]);
+                        int quantity = Integer.parseInt(data[4]);
+                        String manufacturer = data[5];
+                        double weight = Double.parseDouble(data[6]);
+                        String dimensions = data[7];
+                        Product product = new Product(id, name, category, price, quantity, manufacturer, weight, dimensions);
+                        inventory.add(product);
+                    } else {
+                        System.out.println("Invalid data format found in inventory file. Skipping line: " + line);
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid numeric value found in inventory file. Skipping line: " + line);
                 }
             }
         } catch (IOException e) {
@@ -52,6 +62,8 @@ public class InventoryRepositoryImpl implements InventoryRepository {
         String newId = Integer.toString(nextId++);
         product.setId(newId);
         inventory.add(product);
+
+
     }
 
     @Override
@@ -60,9 +72,11 @@ public class InventoryRepositoryImpl implements InventoryRepository {
             Product p = inventory.get(i);
             if (p.getId().equals(product.getId())) {
                 inventory.set(i, product);
-                break;
+                System.out.println("Product updated successfully.");
+                return;
             }
         }
+        System.out.println("Product not found.");
     }
 
     @Override
@@ -71,9 +85,11 @@ public class InventoryRepositoryImpl implements InventoryRepository {
             Product product = inventory.get(i);
             if (product.getId().equals(id)) {
                 inventory.remove(i);
-                break;
+                System.out.println("Product deleted successfully.");
+                return;
             }
         }
+        System.out.println("Product not found.");
     }
 
     @Override
@@ -87,28 +103,78 @@ public class InventoryRepositoryImpl implements InventoryRepository {
     }
 
     @Override
-    public Product[] searchProductsByParameters(String parameter, String value) {
+    public Product[] searchProductsById(String value) {
+        return searchProductsByParameter("id", value);
+    }
+
+    @Override
+    public Product[] searchProductsByName(String value) {
+        return searchProductsByParameter("name", value);
+    }
+
+    @Override
+    public Product[] searchProductsByCategory(String value) {
+        return searchProductsByParameter("category", value);
+    }
+
+    @Override
+    public Product[] searchProductsByManufacturer(String value) {
+        return searchProductsByParameter("manufacturer", value);
+    }
+
+    @Override
+    public Product[] searchProductsByPrice(double minValue, double maxValue) {
+        return searchProductsByParameter("price", String.valueOf(minValue));
+    }
+
+    @Override
+    public Product[] searchProductsByQuantity(int value) {
+        return searchProductsByParameter("quantity", String.valueOf(value));
+    }
+
+    @Override
+    public Product[] searchProductsByWeight(double value) {
+        return searchProductsByParameter("weight", String.valueOf(value));
+    }
+
+    @Override
+    public Product[] searchProductsByDimensions(String value) {
+        return searchProductsByParameter("dimensions", value);
+    }
+
+    private Product[] searchProductsByParameter(String parameter, String value) {
         List<Product> matchingProducts = new ArrayList<>();
 
         for (Product product : inventory) {
-            if (parameter.equalsIgnoreCase("id") && product.getId().equals(value)) {
-                matchingProducts.add(product);
-            } else if (parameter.equalsIgnoreCase("name") && product.getName().equalsIgnoreCase(value)) {
-                matchingProducts.add(product);
-            } else if (parameter.equalsIgnoreCase("category") && product.getCategory().equalsIgnoreCase(value)) {
-                matchingProducts.add(product);
-            } else if (parameter.equalsIgnoreCase("price") && Double.toString(product.getPrice()).equals(value)) {
-                matchingProducts.add(product);
-            } else if (parameter.equalsIgnoreCase("quantity") && Integer.toString(product.getQuantity()).equals(value)) {
+            if (matchesSearchCriteria(product, parameter, value)) {
                 matchingProducts.add(product);
             }
         }
 
+        matchingProducts.sort(Comparator.comparingDouble(Product::getPrice));
+
         return matchingProducts.toArray(new Product[0]);
+    }
+
+    private boolean matchesSearchCriteria(Product product, String parameter, String value) {
+        return switch (parameter.toLowerCase()) {
+            case "id" -> product.getId().equals(value);
+            case "name" -> product.getName().equalsIgnoreCase(value);
+            case "category" -> product.getCategory().equalsIgnoreCase(value);
+            case "manufacturer" -> product.getManufacturer().equalsIgnoreCase(value);
+            case "price" -> product.getPrice() == Double.parseDouble(value);
+            case "quantity" -> product.getQuantity() == Integer.parseInt(value);
+            case "weight" -> product.getWeight() == Double.parseDouble(value);
+            case "dimensions" -> product.getDimensions().equalsIgnoreCase(value);
+            default -> false;
+        };
     }
 
     @Override
     public Product[] getAllProducts() {
-        return inventory.toArray(new Product[0]);
+        List<Product> sortedInventory = new ArrayList<>(inventory);
+        sortedInventory.sort(Comparator.comparingDouble(Product::getPrice));
+
+        return sortedInventory.toArray(new Product[0]);
     }
 }
