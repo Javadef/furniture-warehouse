@@ -1,4 +1,4 @@
-package com.warehouse.businesslogic;
+package com.warehouse.service;
 
 public interface ProductService {
     void addProduct(String name, String category, double price, int quantity,

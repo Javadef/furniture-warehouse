@@ -1,7 +1,7 @@
 package com.warehouse.dataaccess.implementation;
 
 import com.warehouse.dataaccess.InventoryRepository;
-import com.warehouse.model.Product;
+import com.warehouse.entity.Product;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

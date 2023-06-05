@@ -1,7 +1,7 @@
 package com.warehouse.controller;
 
-import com.warehouse.businesslogic.ProductService;
-import com.warehouse.businesslogic.implementation.ProductServiceImpl;
+import com.warehouse.service.ProductService;
+import com.warehouse.service.implementation.ProductServiceImpl;
 import com.warehouse.dataaccess.InventoryRepository;
 import com.warehouse.dataaccess.implementation.InventoryRepositoryImpl;
 import com.warehouse.presentation.MenuView;

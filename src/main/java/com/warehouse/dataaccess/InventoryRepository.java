@@ -1,6 +1,6 @@
 package com.warehouse.dataaccess;
 
-import com.warehouse.model.Product;
+import com.warehouse.entity.Product;
 
 public interface InventoryRepository {
     void addProduct(Product product);

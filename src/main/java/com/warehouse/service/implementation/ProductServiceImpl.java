@@ -1,8 +1,8 @@
-package com.warehouse.businesslogic.implementation;
+package com.warehouse.service.implementation;
 
-import com.warehouse.businesslogic.ProductService;
+import com.warehouse.service.ProductService;
 import com.warehouse.dataaccess.InventoryRepository;
-import com.warehouse.model.Product;
+import com.warehouse.entity.Product;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -108,7 +108,7 @@ public class ProductServiceImpl implements ProductService {
             case "manufacturer" -> matchingProducts = inventoryRepository.searchProductsByManufacturer(value);
             case "price" -> {
                 // Handle price range input
-                double minValue = 0;
+                double minValue;
                 double maxValue = 0;
                 if (value.contains("-")) {
                     String[] range = value.split("-");
