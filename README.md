@@ -1,5 +1,5 @@
 #  Warehouse Search System: Furniture Warehouse
-1
+
 
 ## Task Requirements
 ### The application developed must meet the following requirements:
