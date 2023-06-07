@@ -55,7 +55,7 @@ public class Validator {
         if (command.isEmpty()) {
             throw new IllegalArgumentException("Invalid command. Please enter a command.");
         }
-        String[] validCommands = { "add", "view", "update", "delete", "search", "list", "exit", "save" };
+        String[] validCommands = { "add", "view", "update", "delete", "search", "list", "exit", "save", "commands" };
         for (String validCommand : validCommands) {
             if (validCommand.equalsIgnoreCase(command)) {
                 return true;
@@ -88,36 +88,43 @@ public class Validator {
 
     public static boolean validatePriceParameter(String s) {
         if (s == null || s.isEmpty()) {
+            System.out.println("Invalid price range: Empty input.");
             return false;
         }
 
         String[] rangeValues = s.split("-");
         if (rangeValues.length > 2) {
+            System.out.println("Invalid price range: More than one '-' symbol.");
             return false;
         }
 
         try {
             double minValue = Double.parseDouble(rangeValues[0].trim());
             if (minValue < 0) {
+                System.out.println("Invalid price range: Minimum value cannot be negative.");
                 return false;
             }
 
             if (rangeValues.length == 2) {
                 double maxValue = Double.parseDouble(rangeValues[1].trim());
                 if (maxValue < 0) {
+                    System.out.println("Invalid price range: Maximum value cannot be negative.");
                     return false;
                 }
 
                 if (maxValue < minValue) {
+                    System.out.println("Invalid price range: Maximum value cannot be less than the minimum value.");
                     return false;
                 }
             }
         } catch (NumberFormatException e) {
+            System.out.println("Invalid price range: Invalid numeric values.");
             return false;
         }
 
         return true;
     }
+
 
 }
 

@@ -16,8 +16,7 @@
 
         public static void displayTabular(Product[] products) {
             if (products.length > 0) {
-                System.out.println("Matching Products:");
-                printHeader();
+
                 for (Product product : products) {
                     printProduct(product);
                 }
@@ -38,7 +37,7 @@
             }
         }
 
-        private static void printHeader() {
+        public static void printHeader() {
             System.out.println("ID     | Name                 | Category   | Price      | Quantity | Manufacturer              | Weight     | Dimensions");
             System.out.println("-----------------------------------------------------------------------------------------------------------------------");
         }

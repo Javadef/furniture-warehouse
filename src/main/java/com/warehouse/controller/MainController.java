@@ -30,9 +30,9 @@ public class MainController {
 
     public void start() {
         MenuView.displayApplicationInfo();
-
+        MenuView.displayMenu();
         while (true) {
-            MenuView.displayMenu();
+
             String command = inputHandler.getStringInput("Enter command", Validator::validateCommand);
 
             switch (command.toLowerCase()) {
@@ -43,6 +43,7 @@ public class MainController {
                 case "search" -> searchHandler.searchEngine();
                 case "list" -> listAllProducts();
                 case "save" -> saveChanges();
+                case "commands" -> showCommands();
                 case "exit" -> {
                     Prints.exitMessage();
                     return;
@@ -51,6 +52,10 @@ public class MainController {
             }
             MenuView.displaySeparator();
         }
+    }
+
+    private void showCommands() {
+        MenuView.displayMenu();
     }
 
     private void saveChanges() {

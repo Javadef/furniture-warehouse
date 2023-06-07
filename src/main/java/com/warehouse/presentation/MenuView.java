@@ -26,6 +26,7 @@ public class MenuView {
         System.out.println(" - search: Search for products based on different parameters");
         System.out.println(" - list:   List all products in the warehouse");
         System.out.println(" - save:   save changes to the database ");
+        System.out.println(" - commands:  Warehouse Menu");
         System.out.println(" - exit:   Exit the application");
     }
 
