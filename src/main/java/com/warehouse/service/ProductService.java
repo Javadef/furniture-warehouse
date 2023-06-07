@@ -1,17 +1,38 @@
 package com.warehouse.service;
 
+import com.warehouse.entity.Product;
+
+import java.util.List;
+
 public interface ProductService {
-    void addProduct(String name, String category, double price, int quantity,
-                    String manufacturer, double weight, String dimensions);
 
-    void updateProduct(String id, String name, String category, double price, int quantity,
-                       String manufacturer, double weight, String dimensions);
+    void add(Product newProduct);
 
-    void deleteProduct(String id);
+    int getLastId();
 
-    void viewProductDetails(String id);
+    void saveChanges();
 
-    void searchProductsByParameter(String parameter, String value);
+    void deleteProduct(int id);
 
-    void listAllProducts();
+    List<Product> listAllProducts();
+
+    Product getProductById(int productId);
+
+    void updateProduct(Product updatedProduct);
+
+    List<Product> searchProductsByName(String name);
+
+    List<Product> searchProductsByCategory(String category);
+
+    List<Product> searchProductsByPriceRange(double minValue, double maxValue);
+
+    List<Product> searchProductsByQuantity(int quantity);
+
+    List<Product> searchProductsByManufacturer(String manufacturer);
+
+    List<Product> searchProductsByWeight(double weight);
+
+    List<Product> searchProductsByDimensions(String dimensions);
+
+
 }

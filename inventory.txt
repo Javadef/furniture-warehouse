@@ -38,5 +38,3 @@ ID;Name;Category;Price;Quantity;Manufacturer;Weight;Dimensions
 37;Cookware Set;Kitchen;149.99;5;MasterChef Collection;22.3;various sizes
 38;Food Processor;Kitchen;79.99;8;Chop & Blend;10.6;10x8x16
 39;Barbecue Grill;Kitchen;299.99;2;GrillMaster;68.2;48x22x48
-40;Espresso Machine;Kitchen;199.99;4;CafeLux;16.8;10x8x14
-

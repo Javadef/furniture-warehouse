@@ -2,32 +2,36 @@ package com.warehouse.dataaccess;
 
 import com.warehouse.entity.Product;
 
+import java.util.List;
+
 public interface InventoryRepository {
+    void add(Product newProduct);
+
     void addProduct(Product product);
 
-    void updateProduct(Product product);
+    void removeProduct(int productId);
 
-    void deleteProduct(String id);
+    Product getProductById(int productId);
 
-    Product getProductById(String id);
+    List<Product> getAllProducts();
 
-    Product[] searchProductsById(String value);
+    void updateProduct(Product updatedProduct);
 
-    Product[] searchProductsByName(String value);
+    List<Product> searchProductsByName(String name);
 
-    Product[] searchProductsByCategory(String value);
+    List<Product> searchProductsByCategory(String category);
 
-    Product[] searchProductsByManufacturer(String value);
+    List<Product> searchProductsByPriceRange(double minValue, double maxValue);
 
-    Product[] searchProductsByPrice(double minValue, double maxValue);
+    List<Product> searchProductsByQuantity(int quantity);
 
-    Product[] searchProductsByQuantity(int value);
+    List<Product> searchProductsByManufacturer(String manufacturer);
 
-    Product[] searchProductsByWeight(double value);
+    List<Product> searchProductsByWeight(double weight);
 
-    Product[] searchProductsByDimensions(String value);
+    List<Product> searchProductsByDimensions(String dimensions);
 
-    Product[] getAllProducts();
+    void saveChanges();
 
-
+    int getLastId();
 }
