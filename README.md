@@ -59,5 +59,6 @@
  - search: Search for products
  - save: save changes to the database
  - list: List all products
+ - commands: warehouse menu
  - exit:   Exit the application
            
