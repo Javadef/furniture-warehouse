@@ -57,5 +57,7 @@
  - update: Update a product
  - delete: Delete a product
  - search: Search for products
+ - save: save changes to the database
  - list: List all products
+ - exit:   Exit the application
            
