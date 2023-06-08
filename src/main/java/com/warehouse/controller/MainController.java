@@ -1,13 +1,13 @@
 package com.warehouse.controller;
 
+import com.warehouse.dataaccess.InventoryRepository;
+import com.warehouse.dataaccess.implementation.InventoryRepositoryImpl;
 import com.warehouse.entity.Product;
+import com.warehouse.presentation.MenuView;
 import com.warehouse.presentation.Prints;
 import com.warehouse.presentation.ProductView;
 import com.warehouse.service.ProductService;
 import com.warehouse.service.implementation.ProductServiceImpl;
-import com.warehouse.dataaccess.InventoryRepository;
-import com.warehouse.dataaccess.implementation.InventoryRepositoryImpl;
-import com.warehouse.presentation.MenuView;
 import com.warehouse.utility.InputHandler;
 import com.warehouse.utility.ObjectCreator;
 import com.warehouse.utility.Validator;
@@ -27,6 +27,8 @@ public class MainController {
         searchHandler = new SearchHandler(productService);
         objectCreator = new ObjectCreator(inputHandler, productService);
     }
+
+
 
     public void start() {
         MenuView.displayApplicationInfo();
@@ -67,7 +69,7 @@ public class MainController {
         }
     }
 
-    private void addProduct() {
+    void addProduct() {
         try {
             System.out.println("Enter product details:");
             Product newProduct = objectCreator.createProductFromUserInput();
@@ -78,7 +80,7 @@ public class MainController {
             handleException("An error occurred while adding the product: " + e.getMessage());
         }
     }
-    private void updateProduct() {
+    void updateProduct() {
         try {
             int productId = inputHandler.getIntInput("Enter product ID", Validator::validateProductId);
             Product productToUpdate = productService.getProductById(productId);
@@ -95,7 +97,7 @@ public class MainController {
             handleException("An error occurred while updating the product: " + e.getMessage());
         }
     }
-    private void deleteProduct() {
+    void deleteProduct() {
         int id = inputHandler.getIntInput("Enter product ID", Validator::validateProductId);
         Product product = productService.getProductById(id);
 
@@ -109,9 +111,11 @@ public class MainController {
     }
 
     private void listAllProducts() {
+        ProductView.printHeader();
         productService.listAllProducts();
     }
-    private void viewProductDetails() {
+
+    void viewProductDetails() {
         int productId = inputHandler.getIntInput("Enter product ID", Validator::validateProductId);
         Product product = productService.getProductById(productId);
         ProductView.displayProductDetails(product);
@@ -119,4 +123,6 @@ public class MainController {
     private void handleException(String errorMessage) {
         System.out.println(errorMessage);
     }
+
+
 }

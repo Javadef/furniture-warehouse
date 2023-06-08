@@ -1,7 +1,7 @@
 package com.warehouse.entity;
 
 public class Product {
-    private final int id;
+    private int id;
     private String name;
     private String category;
     private double price;
@@ -26,6 +26,9 @@ public class Product {
 
     public int getId() {
         return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -95,4 +98,6 @@ public class Product {
                 + "Weight: " + weight + "\n"
                 + "Dimensions: " + dimensions + "\n";
     }
+
+
 }

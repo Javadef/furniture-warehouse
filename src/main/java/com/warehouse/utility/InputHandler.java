@@ -14,12 +14,10 @@ public class InputHandler {
         while (true) {
             System.out.print(fieldName + ": ");
             String input = scanner.nextLine().trim();
-            try {
-                if (validator.apply(input)) {
-                    return input;
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+            if (validator.apply(input)) {
+                return input;
+            } else {
+                System.out.println("Invalid input. Please enter a valid value.");
             }
         }
     }
@@ -32,11 +30,11 @@ public class InputHandler {
                 double value = Double.parseDouble(input);
                 if (validator.apply(value)) {
                     return value;
+                } else {
+                    System.out.println("Invalid input. Please enter a valid value.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid decimal number.");
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
             }
         }
     }
@@ -49,11 +47,11 @@ public class InputHandler {
                 int value = Integer.parseInt(input);
                 if (validator.apply(value)) {
                     return value;
+                } else {
+                    System.out.println("Invalid input. Please enter a valid value.");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid integer number.");
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
             }
         }
     }

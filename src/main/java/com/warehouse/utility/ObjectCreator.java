@@ -34,5 +34,4 @@ public class ObjectCreator {
 
         return new Product(lastId, name, category, price, quantity, manufacturer, weight, dimensions);
     }
-
 }
