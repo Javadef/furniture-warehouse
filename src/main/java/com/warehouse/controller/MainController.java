@@ -111,7 +111,7 @@ public class MainController {
     }
 
     private void listAllProducts() {
-        ProductView.printHeader();
+      
         productService.listAllProducts();
     }
 
